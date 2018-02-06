@@ -19,6 +19,7 @@ public:
   void bst();
   void insert(std::string word);
   node* insert(std::string word, node* t);
+  void deleteNode(std::string word);
   node* deleteNode(std::string word);
   bool search(std::string word);
   void inorder(node* n);
