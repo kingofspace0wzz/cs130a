@@ -9,4 +9,36 @@ bst::bst(){
   root = nullptr;
 }
 
-node * bst::insert()
+node * bst::insert(string word, node* t){
+  if (t == nullptr){
+    t = new node;
+    t->count++;
+    t->word = word;
+    t->left = t->right = nullptr;
+  }
+  else if(x < t->data)
+    t->left = insert(x, t->left);
+
+  else if(x > t->data)
+    t->right = insert(x, t->right);
+  
+  return t;
+}
+
+void bst::insert(string word){
+  root = insert(word, root);
+}
+
+node * bst::deleteNode(string word, node* t){
+  
+}
+
+void bst::deleteNode(string word){
+  root = deleteNode(string word, root);  
+}
+
+node* bst::search(string word, node* t){
+  if (t == nullptr) 
+    return nullptr;
+  if (t->count
+  
