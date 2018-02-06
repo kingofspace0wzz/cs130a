@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <string>
 
 template <class T>
@@ -16,7 +17,8 @@ private:
   node<T> *root; // root of bst
 public:
   void bst();
-  node* insert(T word);
+  void insert(T word);
+  node* insert(T word, node* t);
   node* deleteNode(T word);
   bool search(T word);
   void inorder(node* n);
