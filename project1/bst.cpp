@@ -40,5 +40,18 @@ void bst::deleteNode(string word){
 node* bst::search(string word, node* t){
   if (t == nullptr) 
     return nullptr;
-  if (t->count
+  if (t->word.compare(word) < 0)
+    return search(word, t->left);
+  else if (t->word.compare(word) > 0)
+    return search(word, t->right);
+  else 
+    return t;
+}
+
+bool bst::search(string word){
+  if(search(word, root) == nullptri)
+    return false;
+  eles
+    return true;
+}
   
