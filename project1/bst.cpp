@@ -38,7 +38,7 @@ node * bst::insert(string word, node* t){
 
   else if(t->word.compare(word) < 0)
     t->right = insert(word, t->right);
-  
+
   return t;
 }
 
@@ -78,33 +78,37 @@ node * bst::deleteNode(string word, node* t){
 }
 
 void bst::remove(string word){
-  node* temp;
-  temp = search(word, root);
-  if (temp->count > 1){
-    temp->count--;
-    return;
-  }
-  root = deleteNode(word, root);   
+  if (search(word))
+    root = deleteNode(word, root);
+  else
+    cout << word << " does not exist" << endl;
 }
 
 node* bst::search(string word, node* t){
-  if (t == nullptr) 
+  if (t == nullptr)
     return nullptr;
   if (t->word.compare(word) > 0)
     return search(word, t->left);
   else if (t->word.compare(word) < 0)
     return search(word, t->right);
-  else 
+  else
     return t;
 }
 
 bool bst::search(string word){
-  if(search(word, root) == nullptr)
+  if(search(word, root) == nullptr){
     return false;
-  else
+  }else
     return true;
 }
-  
+
+void bst::exist(string word){
+  if (search(word))
+    cout << word << " " << "exists" << endl;
+  else
+    cout << word << " " << "does not exist" << endl;
+}
+
 void bst::inorder(node* t){
   if (t == nullptr)
     return;
@@ -138,7 +142,7 @@ int main(){
   t.insert(str4);
 
   t.remove("world");
-  t.remove("r");
+  t.remove("b");
   t.display();
 
   return 0;

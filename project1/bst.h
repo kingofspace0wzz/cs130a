@@ -29,4 +29,6 @@ public:
   void display();
   void sort();
   void rangeSearch(std::string word1, std::string word2);
+
+  void exist(std::string word);
 };
