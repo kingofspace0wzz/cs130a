@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <algorithm>
 #include <string>
 
 //template <class T>
@@ -31,4 +31,7 @@ public:
   void rangeSearch(std::string word1, std::string word2);
 
   void exist(std::string word);
+
+  void StringToLower(std::string& word);
+
 };

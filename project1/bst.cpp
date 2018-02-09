@@ -43,6 +43,7 @@ node * bst::insert(string word, node* t){
 }
 
 void bst::insert(string word){
+  StringToLower(word);
   if (search(word)){
     node* temp = search(word, this->root);
     temp->count = temp->count + 1;
@@ -78,6 +79,7 @@ node * bst::deleteNode(string word, node* t){
 }
 
 void bst::remove(string word){
+  StringToLower(word);
   if (search(word))
     root = deleteNode(word, root);
   else
@@ -96,6 +98,7 @@ node* bst::search(string word, node* t){
 }
 
 bool bst::search(string word){
+  StringToLower(word);
   if(search(word, root) == nullptr){
     return false;
   }else
@@ -103,10 +106,15 @@ bool bst::search(string word){
 }
 
 void bst::exist(string word){
+
   if (search(word))
     cout << word << " " << "exists" << endl;
   else
     cout << word << " " << "does not exist" << endl;
+}
+
+void sort(){
+  return;
 }
 
 void bst::inorder(node* t){
@@ -122,13 +130,25 @@ void bst::display(){
 }
 
 
+// helper functions
+void bst::StringToLower(string& word)
+{
+  for (int i = 0; i < word.size(); ++i)
+{
+    word[i] = tolower(word[i]);
+}
+}
+
+
 int main(){
-  string str1 = "hello";
-  string str2 = "world";
-  string str3 = "My";
-  string str4 = "name";
-  string str5 = "is";
+  string str1 = "Carlos";
+  string str2 = "Gerardo";
+  string str3 = "Kamilo";
+  string str4 = "Angel";
+  string str5 = "Bosco";
   string str6 = "prince";
+  string str7 = "Prince";
+
   bst t = bst();
   t.insert(str1);
   t.insert(str2);
@@ -136,13 +156,12 @@ int main(){
   t.insert(str4);
   t.insert(str5);
   t.insert(str6);
+  t.insert(str7);
 
   t.insert(str2);
   t.insert(str3);
   t.insert(str4);
 
-  t.remove("world");
-  t.remove("b");
   t.display();
 
   return 0;
