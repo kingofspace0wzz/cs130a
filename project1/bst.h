@@ -18,6 +18,8 @@ private:
   node* insert(std::string word, node* t);
   node* deleteNode(std::string word);
   node* search(std::string word, node* t);
+  node* minNode(node* t);
+  node* maxNode(node* t);
 public:
   void bst();
   void insert(std::string word);
