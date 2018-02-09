@@ -142,29 +142,30 @@ void bst::StringToLower(string& word)
 }
 
 
-int main(){
-  string str1 = "Carlos";
-  string str2 = "Gerardo";
-  string str3 = "Kamilo";
-  string str4 = "Angel";
-  string str5 = "Bosco";
-  string str6 = "prince";
-  string str7 = "Prince";
 
-  bst t = bst();
-  t.insert(str1);
-  t.insert(str2);
-  t.insert(str3);
-  t.insert(str4);
-  t.insert(str5);
-  t.insert(str6);
-  t.insert(str7);
+// int main(){
+//   string str1 = "Carlos";
+//   string str2 = "Gerardo";
+//   string str3 = "Kamilo";
+//   string str4 = "Angel";
+//   string str5 = "Bosco";
+//   string str6 = "prince";
+//   string str7 = "Prince";
 
-  t.insert(str2);
-  t.insert(str3);
-  t.insert(str4);
+//   bst t = bst();
+//   t.insert(str1);
+//   t.insert(str2);
+//   t.insert(str3);
+//   t.insert(str4);
+//   t.insert(str5);
+//   t.insert(str6);
+//   t.insert(str7);
 
-  t.display();
-  printf("the size is: %d", t.size());
-  return 0;
-}
+//   t.insert(str2);
+//   t.insert(str3);
+//   t.insert(str4);
+
+//   t.display();
+//   printf("the size is: %d", t.size());
+//   return 0;
+// }
