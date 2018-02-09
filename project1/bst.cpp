@@ -33,11 +33,11 @@ node * bst::insert(string word, node* t){
     t->word = word;
     t->left = t->right = nullptr;
   }
-  else if(x < t->data)
-    t->left = insert(x, t->left);
+  else if(t->word.compare(word) >= 0)
+    t->left = insert(word, t->left);
 
-  else if(x > t->data)
-    t->right = insert(x, t->right);
+  else if(t->word.compare(word) < 0)
+    t->right = insert(word, t->right);
   
   return t;
 }
@@ -77,8 +77,14 @@ node * bst::deleteNode(string word, node* t){
   return t;
 }
 
-void bst::deleteNode(string word){
-  root = deleteNode(string word, root);   
+void bst::remove(string word){
+  node* temp;
+  temp = search(word, root);
+  if (temp->count > 1){
+    temp->count--;
+    return;
+  }
+  root = deleteNode(word, root);   
 }
 
 node* bst::search(string word, node* t){
@@ -95,7 +101,45 @@ node* bst::search(string word, node* t){
 bool bst::search(string word){
   if(search(word, root) == nullptr)
     return false;
-  eles
+  else
     return true;
 }
   
+void bst::inorder(node* t){
+  if (t == nullptr)
+    return;
+  inorder(t->left);
+  cout << t->word << ": " << t->count << ", " << endl;
+  inorder(t->right);
+}
+
+void bst::display(){
+  inorder(root);
+}
+
+
+int main(){
+  string str1 = "hello";
+  string str2 = "world";
+  string str3 = "My";
+  string str4 = "name";
+  string str5 = "is";
+  string str6 = "prince";
+  bst t = bst();
+  t.insert(str1);
+  t.insert(str2);
+  t.insert(str3);
+  t.insert(str4);
+  t.insert(str5);
+  t.insert(str6);
+
+  t.insert(str2);
+  t.insert(str3);
+  t.insert(str4);
+
+  t.remove("world");
+  t.remove("r");
+  t.display();
+
+  return 0;
+}
