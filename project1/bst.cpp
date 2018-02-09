@@ -51,6 +51,7 @@ void bst::insert(string word){
   else
   {
   root = insert(word, root);
+  this->num = this->num + 1;
   }
 }
 
@@ -80,9 +81,10 @@ node * bst::deleteNode(string word, node* t){
 
 void bst::remove(string word){
   StringToLower(word);
-  if (search(word))
+  if (search(word)){
     root = deleteNode(word, root);
-  else
+    this->num = this->num - 1; 
+  }else
     cout << word << " does not exist" << endl;
 }
 
@@ -163,6 +165,6 @@ int main(){
   t.insert(str4);
 
   t.display();
-
+  printf("the size is: %d", t.size());
   return 0;
 }

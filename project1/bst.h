@@ -15,6 +15,7 @@ struct node{
 class bst{
 private:
   node *root; // root of bst
+  int num = 0; // total number of nodes
   node* insert(std::string word, node* t);
   node* deleteNode(std::string word, node* t);
   node* search(std::string word, node* t);
@@ -33,5 +34,7 @@ public:
   void exist(std::string word);
 
   void StringToLower(std::string& word);
+
+  int size() {return this->num;}
 
 };
