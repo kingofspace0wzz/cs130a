@@ -47,6 +47,7 @@ void bst::insert(string word){
   if (search(word)){
     node* temp = search(word, this->root);
     temp->count = temp->count + 1;
+    this->num = this->num + 1;
   }
   else
   {
@@ -64,17 +65,23 @@ node * bst::deleteNode(string word, node* t){
   else if (t->word.compare(word) < 0)
     t->right = deleteNode(word, t->right);
   else if (t->left != nullptr && t->right != nullptr){
-    temp = minNode(t->right);
-    t->word = temp->word;
-    t->count = temp->count;
-    t->right = deleteNode(t->word, t->right);
+    if (t->count > 1)
+      t->count = t->count - 1;  
+    else{
+      temp = minNode(t->right);
+      t->word = temp->word;
+      t->count = temp->count;
+      t->right = deleteNode(t->word, t->right);
+    }
   } else {
     temp = t;
+      
     if (t->left == nullptr)
       t = t->right;
     else if (t->right == nullptr)
       t= t->left;
     delete temp;
+    
   }
   return t;
 }
@@ -115,8 +122,39 @@ void bst::exist(string word){
     cout << word << " " << "does not exist" << endl;
 }
 
-void sort(){
+// Updating
+void bst::sort(){
   return;
+}
+
+// Updating
+void bst::rangeSearch(string startWord, string endWord, node* t){
+  if (t == nullptr)
+    return;
+
+  // startWord is in the left subtree of t  
+  if (startWord.compare(t->word) < 0)
+    rangeSearch(startWord, endWord, t->left);
+
+  // if t is in the range, then print it out  
+  if (startWord.compare(t->word) <= 0 && endWord.compare(t->word) >= 0)
+    cout << t->word << endl;
+
+  // endWord is in the right subtree of t
+  if (endWord.compare(t->word) > 0)
+    rangeSearch(startWord, endWord, t->right); 
+}
+
+void bst::Print(){
+  string strInput1;
+  string strInput2;
+  cin >> strInput1;
+  cin >> strInput2;
+  if (strInput1.compare(strInput2) > 0){
+    cout << "startWord cannot be in the right of endWord" << endl;
+    return;
+  }
+  rangeSearch(strInput1, strInput2, root);
 }
 
 void bst::inorder(node* t){
