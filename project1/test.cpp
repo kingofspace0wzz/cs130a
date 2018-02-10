@@ -37,28 +37,14 @@ int main(){
         istringstream iss (line);
         string word;
         while(iss >> word)
-            cout << word << endl;
+            // cout << word << endl;
+            t.insert(word);
     }
-
-
-    // while(inf){
-    //     bool alpha = true;
-    //     string strInput;
-
-    //     inf >> strInput;
-
-
-
-    //     strInput.erase(remove_if(strInput.begin(),strInput.end(),[](char c) {return !isalpha(c);}), strInput.end());
-    //     cout << strInput << endl;
-    //     // if (isLetters(strInput)){
-    //     //     if (!isalpha(strInput[strInput.size()-1])){
-    //     //         string temp (strInput.begin(), strInput.begin()+strInput.size()-1);
-    //     //         strInput = temp;
-    //     //     }
-    //     //     cout << strInput << endl;   
-    //     //     count++;
-    //     // }else
-    //     //     continue;
-    // }
+    t.display();
+    t.remove("you");
+    t.remove("zhong");
+    t.display();
+    t.exist("you");
+    t.exist("zhong");
+    t.Print();
 }

@@ -9,6 +9,18 @@ bst::bst(){
   root = nullptr;
 }
 
+bst::~bst(){
+  free(root);
+}
+
+void free(node* t){
+  if (t->left != nullptr)
+    free(t->left);
+  if (t->right != nullptr)
+    free(t->right);
+  delete t;
+}
+
 node* bst::minNode(node* t){
   if (t == nullptr)
     return nullptr;

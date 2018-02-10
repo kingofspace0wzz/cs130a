@@ -23,6 +23,9 @@ private:
   node* maxNode(node* t);
 public:
   bst();
+  ~bst();
+  void free(node* t); // help desctructor free memory
+
   void insert(std::string word);
   void remove(std::string word);
   bool search(std::string word);
