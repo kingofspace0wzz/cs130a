@@ -12,6 +12,8 @@ class entry
 
     int key; 
 
+    bool flag = false; // true if the entry here has been deleted, don't forget to set it back to true if something is inserted here.
+
     // constructor of the entry
     entry(int key, string word){
         this->word = word;
@@ -23,7 +25,8 @@ class entry
 class hashTable{
     
     entry** array;
-
+    
+    entry* dummy;  // dummy is a dead entry with key value less than 0
     int capacity; // largest size of hashTable
     int size; // current size
 
@@ -35,21 +38,26 @@ public:
         for(int i = 0; i<capacity; ++i){
             array[i] = nullptr;
         }
+
+        dummy = new entry(-1, "dummy");
     }
 
     ~hashTable();
 
-    int hash(int key, int index){
-        return (hash_one(key) + index*hash_double(key)) % capacity;
-    }
+    // function for linear probing
+    int hash(std::string word);
 
-    int hash_one(int key){
-        return key % capacity;
-    }
 
-    int hash_double(int key){
-        return 1 + (key % (capacity - 1));
-    }
+    // functions for double hashing
+    // int hash(int key, int index){
+    //     return (hash_one(key) + index*hash_double(key)) % capacity;
+    // }
+
+    // int hash_one(int key){
+    //     return key % capacity;
+    // }
+
+    int hash_double(std::string word);
 
     void insertEntry(std::string word);
     void deleteEntry(std::string word);
@@ -59,4 +67,7 @@ public:
     void rangeSearch(std::string startWord, std::string endWord);
 
     
+    // helper functions
+    void StringToLower(std::string& word);
+
 }
