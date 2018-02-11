@@ -1,11 +1,13 @@
 #include "hashTable.h"
-
+#include <algorithm>
+#include <vector>
 
 using namespace std;
 
 hashTable::~hashTable(){
 
-    //stub
+    delete [] array;
+    delete dummy;
 }
 
 int hashTable::hash(string word){   
@@ -17,7 +19,7 @@ int hashTable::hash(string word){
     return key % this->capacity;
 }
 
-int hash_double(std::string word){
+int hashTable::hash_double(std::string word){
     StringToLower(word);
     int key = 0; // ASCII value of the string word
     for(int i=0; i<word.size(); ++i){
@@ -28,10 +30,27 @@ int hash_double(std::string word){
 
 void hashTable::insertEntry(string word){
 
+    StringToLower(word);
     int index = hash(word);
+    int offset = hash_double(word);
 
-    return ; // stub
+    while (array[index] != nullptr && array[index]->flag != -1){
+        if (array[index]->word == word){
+            array[index]->count++;  // the word already exists, increase the frequency
+            return;
+        }else{
+
+            index = (index + offset) % this->capacity;  
+        }
+    }
+
+    if (array[index] == nullptr || array[index]->flag == -1){
+        array[index] = new entry(1, word);
+        this->size++;   // increase the table size
+    }
+    return ; 
 }
+
 void hashTable::deleteEntry(string word){
     
     StringToLower(word);
@@ -80,13 +99,28 @@ int hashTable::searchIndex(string word){
     return -1;
 }
 
-void hashTable::sort(){
-
-    return; // stub
+void hashTable::sortHash(){
+    vector<string> elements;
+    for(int i = 0; i<this->capacity; ++i){
+        if (array[i] != nullptr && array[i]->flag >= 0)
+            elements.push_back(array[i]->word);
+    }
+    sort(elements.begin(), elements.end());
+    for (string &s : elements){
+        cout << s << endl;
+    }
+    return; 
 }
 void hashTable::rangeSearch(string startWord, string endWord){
+    StringToLower(startWord);
+    StringToLower(endWord);
+    for(int i = 0; i<this->capacity; ++i){
+        if (array[i] != nullptr && array[i]->flag >= 0 && array[i]->word.compare(startWord) >= 0 && array[i]->word.compare(endWord) <= 0)
+            cout << array[i]->word << endl;
+    }
+    
+    return;
 
-    return; // stub
 }
 
 
@@ -96,3 +130,48 @@ void hashTable::StringToLower(string& word){
     word[i] = tolower(word[i]);
    }
 }
+
+void hashTable::print(){
+    for (int i = 0; i<this->capacity; ++i){
+        if (array[i] != nullptr && array[i]->flag >= 0){
+            cout << array[i]->word << ", " << array[i]->count << endl;
+        }
+    }
+    return;
+}
+
+
+// test
+
+// int main(){
+//     string str1 = "Carlos";
+//     string str2 = "Gerardo";
+//     string str3 = "Kamilo";
+//     string str4 = "Angel";
+//     string str5 = "Bosco";
+//     string str6 = "prince";
+//     string str7 = "Prince";
+
+//     hashTable table = hashTable();
+//     table.insertEntry(str1);
+//     table.insertEntry(str2);
+//     table.insertEntry(str3);
+//     table.insertEntry(str4);
+//     table.insertEntry(str5);
+//     table.insertEntry(str6);
+//     table.insertEntry(str7);
+
+//     table.print();
+
+//     table.deleteEntry("prince");
+//     cout << "now we delete prince" << endl;
+//     table.print();
+//     cout << "Does Prince exist?, " << table.search("Prince") << endl;
+
+//     table.deleteEntry("Prince");
+//     cout << "delete another prince" << endl;
+//     table.print();
+//     cout << "Does Prince still exist?, " << table.search("Prince") << endl;
+
+//     return 0;
+// }
