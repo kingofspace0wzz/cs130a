@@ -13,7 +13,7 @@ bst::~bst(){
   free(root);
 }
 
-void free(node* t){
+void bst::free(node* t){
   if (t->left != nullptr)
     free(t->left);
   if (t->right != nullptr)
@@ -65,6 +65,7 @@ void bst::insert(string word){
   {
   root = insert(word, root);
   this->num = this->num + 1;
+  this->sizes++;
   }
 }
 
@@ -86,14 +87,18 @@ node * bst::deleteNode(string word, node* t){
       t->right = deleteNode(t->word, t->right);
     }
   } else {
-    temp = t;
+    if (t->count > 1)
+      t->count = t->count - 1;
+    else {
+      temp = t;
       
-    if (t->left == nullptr)
-      t = t->right;
-    else if (t->right == nullptr)
-      t= t->left;
-    delete temp;
-    
+      if (t->left == nullptr)
+        t = t->right;
+      else if (t->right == nullptr)
+        t= t->left;
+      delete temp;
+      this->sizes--;
+    }
   }
   return t;
 }
@@ -136,7 +141,7 @@ void bst::exist(string word){
 
 // Updating
 void bst::sort(){
-  return;
+  display();
 }
 
 // Updating
@@ -157,11 +162,8 @@ void bst::rangeSearch(string startWord, string endWord, node* t){
     rangeSearch(startWord, endWord, t->right); 
 }
 
-void bst::Print(){
-  string strInput1;
-  string strInput2;
-  cin >> strInput1;
-  cin >> strInput2;
+void bst::Print(string strInput1, string strInput2){
+  
   if (strInput1.compare(strInput2) > 0){
     cout << "startWord cannot be in the right of endWord" << endl;
     return;
@@ -190,6 +192,8 @@ void bst::StringToLower(string& word)
     word[i] = tolower(word[i]);
 }
 }
+
+
 
 
 

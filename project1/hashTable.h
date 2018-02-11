@@ -29,7 +29,7 @@ class hashTable{
 
 public:
     hashTable(){
-        capacity = 10000;
+        capacity = 10000000;
         size = 0;
         array = new entry*[capacity];
         for(int i = 0; i<capacity; ++i){
@@ -68,5 +68,5 @@ public:
     // helper functions
     void StringToLower(std::string& word);
     void print();  // simply print all the entries (non dummy) with their value and counts.
-
+    int getSize();
 };

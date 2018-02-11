@@ -7,7 +7,7 @@ using namespace std;
 hashTable::~hashTable(){
 
     delete [] array;
-    delete dummy;
+    // delete dummy;
 }
 
 int hashTable::hash(string word){   
@@ -30,24 +30,37 @@ int hashTable::hash_double(std::string word){
 
 void hashTable::insertEntry(string word){
 
+
     StringToLower(word);
     int index = hash(word);
-    int offset = hash_double(word);
+    // int offset = hash_double(word);
 
-    while (array[index] != nullptr && array[index]->flag != -1){
-        if (array[index]->word == word){
-            array[index]->count++;  // the word already exists, increase the frequency
-            return;
-        }else{
-
-            index = (index + offset) % this->capacity;  
-        }
+    while (array[index] != nullptr && array[index]->flag >= 0 && array[index]->word != word){
+        index++;
+        index %= this->capacity;  
+        
     }
-
+    
     if (array[index] == nullptr || array[index]->flag == -1){
-        array[index] = new entry(1, word);
         this->size++;   // increase the table size
-    }
+        array[index] = new entry(1, word);
+    }else
+        array[index]->count++;
+        
+    // while (array[index] != nullptr){
+    //     if ()    
+    //         index++;
+    //         index %= this->capacity;  
+        
+    // }
+    
+    // if (array[index] == nullptr || array[index]->flag == -1){
+    //     this->size++;   // increase the table size
+    //     array[index] = new entry(1, word);
+    // }else
+    //     array[index]->count++;
+        
+
     return ; 
 }
 
@@ -56,7 +69,7 @@ void hashTable::deleteEntry(string word){
     StringToLower(word);
     int index = searchIndex(word); // index of the word
     if (index < 0){
-        cout << "word does not exist" << endl;
+        cout << word << " does not exist" << endl;
         return;  
     }
     // when the word appears multiple times, just simple descrease the number it appears
@@ -91,8 +104,8 @@ int hashTable::searchIndex(string word){
     while( array[index] != nullptr ){
         if (array[index]->word == word)
             return index;
-
-        index = (index + offset) % capacity;
+        index++;
+        index %= capacity;
         
     }
 
@@ -140,6 +153,10 @@ void hashTable::print(){
     return;
 }
 
+int hashTable::getSize(){
+    return this->size;
+}
+
 
 // test
 
@@ -160,6 +177,13 @@ void hashTable::print(){
 //     table.insertEntry(str5);
 //     table.insertEntry(str6);
 //     table.insertEntry(str7);
+//     table.insertEntry("abc");
+//     table.insertEntry("bac");
+//     table.insertEntry("acb");
+//     table.insertEntry("bca");
+//     table.insertEntry("cab");
+//     table.insertEntry("cba");
+    
 
 //     table.print();
 

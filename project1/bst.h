@@ -16,6 +16,7 @@ class bst{
 private:
   node *root; // root of bst
   int num = 0; // total number of words
+  int sizes = 0; // total numer of nodes
   node* insert(std::string word, node* t);
   node* deleteNode(std::string word, node* t);
   node* search(std::string word, node* t);
@@ -35,12 +36,14 @@ public:
   void sort();
   
   void rangeSearch(std::string word1, std::string word2, node* t);
-  void Print();
+  void Print(std::string startWord, std::string endWord);
   
   void exist(std::string word);
 
   void StringToLower(std::string& word);
 
-  int size() {return this->num;}
+  int size() {return this->sizes;}
+
+  int num_words() {return this->num;}
 
 };
