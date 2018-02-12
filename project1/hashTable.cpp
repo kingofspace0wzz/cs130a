@@ -13,7 +13,7 @@ hashTable::~hashTable(){
 int hashTable::hash(string word){   
     StringToLower(word);
     int key = 0; // ASCII value of the string word
-    for(int i=0; i<word.size(); ++i){
+    for(unsigned int i=0; i<word.size(); ++i){
         key += word[i];
     }
     return key % this->capacity;
@@ -22,7 +22,7 @@ int hashTable::hash(string word){
 int hashTable::hash_double(std::string word){
     StringToLower(word);
     int key = 0; // ASCII value of the string word
-    for(int i=0; i<word.size(); ++i){
+    for(unsigned int i=0; i<word.size(); ++i){
         key += word[i];
     }
     return 1 + (key % (capacity - 1));
@@ -77,7 +77,7 @@ void hashTable::deleteEntry(string word){
         array[index]->count = array[index]->count - 1;
         return;
     }else{  // if the word appears only once, then delete it and insert dummny entry
-        entry* temp = array[index];
+
         array[index] = dummy;
         this->size--;   // the entry has been deleted, so decrease the current size of the table
         return;
@@ -99,7 +99,7 @@ bool hashTable::search(string word){
 int hashTable::searchIndex(string word){
     StringToLower(word);
     int index = hash(word);
-    int offset = hash_double(word);
+    // int offset = hash_double(word);
     
     while( array[index] != nullptr ){
         if (array[index]->word == word)
@@ -139,7 +139,7 @@ void hashTable::rangeSearch(string startWord, string endWord){
 
 // helper functions
 void hashTable::StringToLower(string& word){
-  for (int i = 0; i < word.size(); ++i){
+  for (unsigned int i = 0; i < word.size(); ++i){
     word[i] = tolower(word[i]);
    }
 }

@@ -395,9 +395,6 @@ void processFiles(bst t, hashTable table){
 
 
 int main(){
-  
-  clock_t t1,t2; // clock to measure the running time of each operation
-
 
   // initialize bst and hashTable
   bst t = bst();
