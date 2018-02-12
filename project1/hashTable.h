@@ -29,7 +29,7 @@ class hashTable{
 
 public:
     hashTable(){
-        capacity = 10000000;
+        capacity = 1000000; // 3/2 * sizeOfDataset
         size = 0;
         array = new entry*[capacity];
         for(int i = 0; i<capacity; ++i){

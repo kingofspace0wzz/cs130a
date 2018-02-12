@@ -9,6 +9,8 @@
 #include <fstream>
 #include <string>
 #include <time.h>
+#include <ctime>
+#include <chrono>
 
 
 using namespace std;
@@ -744,7 +746,7 @@ int main(){
   }
 
 
-  
+  // cout << t.num_words() << endl;
   
   
   
@@ -763,44 +765,120 @@ int main(){
     {
         case 1:  // search;
           {
-            string word;
+          string word;
           cin >> word; // for user to type the word to be searched
-          if (t.search(word) && table.search(word))
+
+          bool searchBST;
+          bool searchTable;
+
+          // using clock
+          clock_t t1, t2;
+          t1 = clock();
+          searchBST = t.search(word);
+          t1 = clock() - t1;
+
+          t2 = clock();
+          searchTable = table.search(word);
+          t2 = clock() - t2;
+
+          // using chrono
+          // auto startBST = std::chrono::high_resolution_clock::now();
+          // searchBST = t.search(word);
+          // auto stopBST = std::chrono::high_resolution_clock::now();
+
+          // auto startTable = std::chrono::high_resolution_clock::now();
+          // searchTable = table.search(word);
+          // auto stopTable = std::chrono::high_resolution_clock::now();
+
+          // std::chrono::duration<float, std::nano> timeBST = stopBST - startBST;
+          // std::chrono::duration<float, std::nano> timeTable = stopTable - startTable;
+        if (searchBST && searchTable){
             cout << "true" << endl;
-          else 
+            cout << t1 << endl;
+            cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+            cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
+        }else{ 
             cout << "false" << endl;
+            cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+            cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
+        }
           continue;
           }
         case 2:  // insert;
           {
+          clock_t t1, t2;
           string word;
           cin >> word;
+
+          t1 = clock();
           t.insert(word);
+          t1 = clock() - t1;
+
+          t2 = clock();
           table.insertEntry(word);
+          t2 = clock() - t2;
+          
+          cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+          cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
+
           continue;
           }
         case 3:  // delete;
           {
+          clock_t t1, t2;
+
           string word;
           cin >> word;
+
+          t1 = clock();
           t.remove(word);
+          t1 = clock() - t1;
+
+          t2 = clock();
           table.deleteEntry(word);
+          t2 = clock() - t2;
+
+          cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+          cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
           continue;
           }
         case 4:  // sort;
           {
+
+          clock_t t1, t2;
+
+          t1 = clock();
           t.sort();
+          t1 = clock() - t1;
+
+          t2 = clock();
           table.sortHash();
+          t2 = clock() - t2;
+
+          cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+          cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
           continue;
           }
         case 5:  // range search;
           {
+
           string startWord;
           string endWord;
           cin >> startWord;
           cin >> endWord;
+          
+          clock_t t1, t2;
+
+          t1 = clock();
           t.Print(startWord, endWord);
+          t1 = clock() - t1;
+
+          t2 = clock();
           table.rangeSearch(startWord, endWord);
+          t2 = clock() - t2;
+
+          cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
+          cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
           continue;
           }
         case 6:  // get the size
