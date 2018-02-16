@@ -84,311 +84,6 @@ void processFiles(bst t, hashTable table){
     }
   }
 
-  // // Chicago
-  // const auto& files_chicago = GetDirectoryFiles("hotels-small/chicago");
-  // for (const auto& file : files_chicago) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/chicago/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // dubai
-  // const auto& files_dubai = GetDirectoryFiles("hotels-small/dubai");
-  // for (const auto& file : files_dubai) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/dubai/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // las-vegas
-  // const auto& files_las = GetDirectoryFiles("hotels-small/las-vegas");
-  // for (const auto& file : files_las) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/las-vegas/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // london
-  // const auto& files_london = GetDirectoryFiles("hotels-small/london");
-  // for (const auto& file : files_london) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/london/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // montreal
-  // const auto& files_montreal = GetDirectoryFiles("hotels-small/montreal");
-  // for (const auto& file : files_montreal) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/montreal/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // new-delhi
-  // const auto& files_delhi = GetDirectoryFiles("hotels-small/new-delhi");
-  // for (const auto& file : files_delhi) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/new-delhi/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // new-york-city
-  // const auto& files_ny = GetDirectoryFiles("hotels-small/new-york-city");
-  // for (const auto& file : files_ny) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/new-york-city/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // san-francisco
-  // const auto& files_sf = GetDirectoryFiles("hotels-small/san-francisco");
-  // for (const auto& file : files_sf) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/san-francisco/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
-
-  // // shanghai
-  // const auto& files_shanghai = GetDirectoryFiles("hotels-small/shanghai");
-  // for (const auto& file : files_shanghai) {
-  //   if (file == "." || file == "..")
-  //       continue;
-    
-  //   std::string fileName (file);
-  //   std::string dir ("hotels-small/shanghai/");
-    
-  //   std::ifstream inf(dir + fileName);
-  //   std::string line;
-  //   while(getline(inf, line)){
-  //       replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           table.insertEntry(word);  // insert word into hashTable
-            
-  //   }
-  //   std::ifstream inf2(dir + fileName);
-  //   std::string line2;
-  //   while(getline(inf2, line2)){
-  //       replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-  //       std::istringstream iss (line2);
-  //       std::string word;
-  //       while(iss >> word)
-            
-  //           t.insert(word);   // insert word into bst
-  //   }
-  // }
 }
 
 
@@ -745,6 +440,15 @@ int main(){
 
   // cout << t.num_words() << endl;
   
+  // read the stopWords file and store stopWords into a hast table
+  hashTable stopWords = hashTable(); // hash table to store stop words
+  ifstream inf("stopWords.txt");
+  while(inf){
+      string word;
+      inf >> word;
+      stopWords.insertEntry(word);
+  }
+
   
   
   
@@ -806,7 +510,10 @@ int main(){
           clock_t t1, t2;
           string word;
           cin >> word;
-
+          
+          if (!isLetters(word) || stopWords.search(word)) // the inserted word must be alphabetic and non-stop word
+            continue;
+          else{
           t1 = clock();
           t.insert(word);
           t1 = clock() - t1;
@@ -819,6 +526,7 @@ int main(){
           cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
 
           continue;
+           }
           }
         case 3:  // delete;
           {
