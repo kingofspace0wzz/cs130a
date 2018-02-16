@@ -271,8 +271,8 @@ int main(){
             t.Print(startWord, endWord);
             t1 = clock() - t1;
 
-            cout << "\n" << endl;
-
+            cout << endl;
+            
             t2 = clock();
             table.rangeSearch(startWord, endWord);
             t2 = clock() - t2;

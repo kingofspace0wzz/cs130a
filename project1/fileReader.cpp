@@ -45,51 +45,60 @@ int main() {
 
   bst t = bst();
   hashTable table = hashTable();
-  const auto& directory_path = std::string(".");
-  const auto& files = GetDirectoryFiles("hotels-small/beijing");
-  for (const auto& file : files) {
-    if (file == "." || file == "..")
-        continue;
-    
-    std::string fileName (file);
-    std::string dir ("hotels-small/beijing/");
-    
-    std::ifstream inf(dir + fileName);
-    std::string line;
-    while(getline(inf, line)){
-        replace_if(line.begin(), line.end(), my_predicate, ' ');
-        
-        std::istringstream iss (line);
-        std::string word;
-        while(iss >> word)
-            // cout << word << endl;
-            table.insertEntry(word);
-            // t.insert(word);
-    }
-    std::ifstream inf2(dir + fileName);
-    std::string line2;
-    while(getline(inf2, line2)){
-        replace_if(line2.begin(), line2.end(), my_predicate, ' ');
-        
-        std::istringstream iss (line2);
-        std::string word;
-        while(iss >> word)
-            // cout << word << endl;
-            // table.insertEntry(word);
-            t.insert(word);
-    }
+
+  hashTable stopWords = hashTable();
+  ifstream inf("stopWords.txt");
+  while (inf)
+  {
+    string word;
+    inf >> word;
+    stopWords.insertEntry(word);
   }
 
-//   const auto& files2 = GetDirectoryFiles("hotels-small/shanghai");
-//   for (const auto& file : files2) {
-//     std::cout << file << std::endl;
-//   }
-//   std::cout << "Bst" << std::endl;
-  // t.display();
-  std::cout << t.size() << std::endl;
+  vector<string> subfile = {"beijing","chicago","dubai","las-vegas","london","montreal","new-delhi","new-york-city","san-francisco","shanghai"};
+  for(vector<string>::iterator it = subfile.begin(); it != subfile.end(); ++it){
+    string path = "hotels-small/" + *it;
+    const auto &files = GetDirectoryFiles(path);
+    for (const auto &file : files)
+    {
+      if (file == "." || file == "..")
+        continue;
+
+      std::string fileName(file);
+      std::string dir = path + "/";
+
+      std::ifstream inf(dir + fileName);
+      std::string line;
+      while (getline(inf, line))
+      {
+        replace_if(line.begin(), line.end(), my_predicate, ' ');
+
+        std::istringstream iss(line);
+        std::string word;
+        while (iss >> word)
+
+          if (!stopWords.search(word))
+            table.insertEntry(word); // insert word into hashTable
+          else
+            continue;
+      }
+      std::ifstream inf2(dir + fileName);
+      std::string line2;
+      while (getline(inf2, line2))
+      {
+        replace_if(line2.begin(), line2.end(), my_predicate, ' ');
+
+        std::istringstream iss(line2);
+        std::string word;
+        while (iss >> word)
+          if (!stopWords.search(word))
+            t.insert(word); // insert word into bst
+          else
+            continue;
+      }
+    }
+  }
   
-  std::cout << "hashTable" << std::endl;
-  // table.print(); 
-  std::cout << table.getSize() << std::endl; 
-  return 0;
+  t.display();
+  table.print();
 }

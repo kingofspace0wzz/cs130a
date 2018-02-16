@@ -127,12 +127,21 @@ void hashTable::sortHash(){
 void hashTable::rangeSearch(string startWord, string endWord){
     StringToLower(startWord);
     StringToLower(endWord);
-    for(int i = 0; i<this->capacity; ++i){
-        if (array[i] != nullptr && array[i]->flag >= 0 && array[i]->word.compare(startWord) >= 0 && array[i]->word.compare(endWord) <= 0)
-            cout << array[i]->word << endl;
-    }
     
-    return;
+    if (startWord.compare(endWord) <= 0){
+        for(int i = 0; i<this->capacity; ++i){
+            if (array[i] != nullptr && array[i]->flag >= 0 && array[i]->word.compare(startWord) >= 0 && array[i]->word.compare(endWord) <= 0)
+                cout << array[i]->word << endl;
+        }
+    
+        return;
+    } else {
+        for (int i = 0; i < this->capacity; ++i)
+        {
+            if (array[i] != nullptr && array[i]->flag >= 0 && array[i]->word.compare(endWord) >= 0 && array[i]->word.compare(startWord) <= 0)
+                cout << array[i]->word << endl;
+        }
+    }
 
 }
 

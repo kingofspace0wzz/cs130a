@@ -165,10 +165,11 @@ void bst::rangeSearch(string startWord, string endWord, node* t){
 void bst::Print(string strInput1, string strInput2){
   
   if (strInput1.compare(strInput2) > 0){
-    cout << "startWord cannot be in the right of endWord" << endl;
-    return;
+    rangeSearch(strInput2, strInput1, root);
+    
+  }else{
+    rangeSearch(strInput1, strInput2, root);
   }
-  rangeSearch(strInput1, strInput2, root);
 }
 
 void bst::inorder(node* t){
