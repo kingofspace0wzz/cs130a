@@ -101,6 +101,7 @@ int main(){
       stopWords.insertEntry(word);
   }
 
+  inf.close();
   // processFiles(t, table);
 
   vector<string> subfile = {"beijing", "chicago", "dubai", "las-vegas", "london", "montreal", "new-delhi", "new-york-city", "san-francisco", "shanghai"};

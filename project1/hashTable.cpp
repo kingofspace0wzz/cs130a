@@ -1,6 +1,7 @@
 #include "hashTable.h"
 #include <algorithm>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -14,7 +15,8 @@ int hashTable::hash(string word){
     StringToLower(word);
     int key = 0; // ASCII value of the string word
     for(unsigned int i=0; i<word.size(); ++i){
-        key += word[i];
+        
+        key += word[i]; // * pow(37, i+1);
     }
     return key % this->capacity;
 }
