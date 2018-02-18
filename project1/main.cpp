@@ -12,7 +12,6 @@
 #include <ctime>
 #include <chrono>
 
-
 using namespace std;
 
 
@@ -132,7 +131,10 @@ int main(){
                   else
                       continue;
           }
+<<<<<<< HEAD
           inf.close();
+=======
+>>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
           std::ifstream inf2(dir + fileName);
           std::string line2;
           while (getline(inf2, line2))
@@ -147,7 +149,10 @@ int main(){
                   else
                       continue;
           }
+<<<<<<< HEAD
           inf2.close();
+=======
+>>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
       }
   }
 
@@ -274,11 +279,19 @@ int main(){
             t1 = clock() - t1;
 
             cout << endl;
+<<<<<<< HEAD
 
             t2 = clock();
             table.rangeSearch(startWord, endWord);
             t2 = clock() - t2;
 
+=======
+            
+            t2 = clock();
+            table.rangeSearch(startWord, endWord);
+            t2 = clock() - t2;
+
+>>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
             cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
             cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
             continue;
