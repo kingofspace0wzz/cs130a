@@ -132,6 +132,7 @@ int main(){
                   else
                       continue;
           }
+          inf.close();
           std::ifstream inf2(dir + fileName);
           std::string line2;
           while (getline(inf2, line2))
@@ -146,6 +147,7 @@ int main(){
                   else
                       continue;
           }
+          inf2.close();
       }
   }
 
@@ -272,7 +274,7 @@ int main(){
             t1 = clock() - t1;
 
             cout << endl;
-            
+
             t2 = clock();
             table.rangeSearch(startWord, endWord);
             t2 = clock() - t2;

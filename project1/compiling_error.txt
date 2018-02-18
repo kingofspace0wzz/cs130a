@@ -1,7 +1,0 @@
-D:\Projects\cs130a\project1\bst.cpp:134:6: error: prototype for 'void bst::StringToLower(std::__cxx11::string)' does not match any in class 'bst'
- void bst::StringToLower(string word)
-      ^~~
-In file included from D:\Projects\cs130a\project1\bst.cpp:1:0:
-D:\Projects\cs130a\project1\bst.h:35:8: error: candidate is: void bst::StringToLower(std::__cxx11::string&)
-   void StringToLower(std::string& word);
-        ^~~~~~~~~~~~~
