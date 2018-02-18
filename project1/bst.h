@@ -22,6 +22,8 @@ private:
   node* search(std::string word, node* t);
   node* minNode(node* t);
   node* maxNode(node* t);
+
+  void sort(node* t, std::ofstream& out);
 public:
   bst();
   ~bst();
@@ -33,7 +35,7 @@ public:
   void inorder(node* t);
   void display();
   
-  void sort();
+  void sort(std::ofstream& out);
   
   void rangeSearch(std::string word1, std::string word2, node* t);
   void Print(std::string startWord, std::string endWord);

@@ -124,6 +124,18 @@ void hashTable::sortHash(){
     }
     return; 
 }
+
+vector<string> hashTable::sortFile(ofstream& out){
+    vector<string> elements;
+    for(int i = 0; i<this->capacity; ++i){
+        if (array[i] != nullptr && array[i]->flag >= 0)
+            elements.push_back(array[i]->word);
+    }
+    sort(elements.begin(), elements.end());
+    
+    return elements ;
+}
+
 void hashTable::rangeSearch(string startWord, string endWord){
     StringToLower(startWord);
     StringToLower(endWord);

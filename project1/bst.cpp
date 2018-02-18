@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -140,8 +141,16 @@ void bst::exist(string word){
 }
 
 // Updating
-void bst::sort(){
-  display();
+void bst::sort(ofstream& out){
+  sort(root, out);
+}
+
+void bst::sort(node *t, ofstream& out){
+  if (t == nullptr)
+    return;
+  sort(t->left, out);
+  out << t->word << endl;
+  sort(t->right, out);
 }
 
 // Updating

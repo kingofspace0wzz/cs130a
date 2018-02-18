@@ -1,4 +1,4 @@
-
+#include <vector>
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -62,6 +62,8 @@ public:
     int searchIndex(std::string word);
 
     void sortHash();
+    std::vector<std::string> sortFile(std::ofstream& out);
+
     void rangeSearch(std::string startWord, std::string endWord);
 
     

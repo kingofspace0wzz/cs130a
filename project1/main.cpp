@@ -131,10 +131,10 @@ int main(){
                   else
                       continue;
           }
-<<<<<<< HEAD
+
           inf.close();
-=======
->>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
+
+
           std::ifstream inf2(dir + fileName);
           std::string line2;
           while (getline(inf2, line2))
@@ -149,10 +149,9 @@ int main(){
                   else
                       continue;
           }
-<<<<<<< HEAD
+
           inf2.close();
-=======
->>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
+
       }
   }
 
@@ -160,12 +159,14 @@ int main(){
     
   while(true){
 
-    cout << "Pree 1 to do seach; Press 2 to do insert; Press 3 to do delete; Press 4 to do sort; Press 5 to do range search; Press 6 to get the size\n";
+    //cout << "Pree 1 to do seach; Press 2 to do insert; Press 3 to do delete; Press 4 to do sort; Press 5 to do range search; Press 6 to get the size\n";
 
     int index;
     cin >> index;
-    if (cin.good() == false || index > 6 || index <= 0){
-      cout << "Type an integer from 1 to 6" << endl;
+
+    // ignore all the inputs that are not 0 to 5
+    if (cin.good() == false || index > 5 || index <= 0){
+      //cout << "Type an integer from 1 to 6" << endl;
       continue;
     }
     switch(index)
@@ -246,16 +247,24 @@ int main(){
           }
         case 4:  // sort;
           {
-
+          
+          ofstream out ("sort.txt");
           clock_t t1, t2;
 
           t1 = clock();
-          t.sort();
+          t.sort(out);
           t1 = clock() - t1;
 
+          out << "\n" << endl;
+
           t2 = clock();
-          table.sortHash();
+          vector<string> sorted = table.sortFile(out);
+          for (string& s: sorted){
+            out << s << endl;
+          }
           t2 = clock() - t2;
+
+          out.close();
 
           cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
           cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
@@ -278,20 +287,19 @@ int main(){
             t.Print(startWord, endWord);
             t1 = clock() - t1;
 
-            cout << endl;
-<<<<<<< HEAD
+            cout << "\n" << endl;
+
 
             t2 = clock();
             table.rangeSearch(startWord, endWord);
             t2 = clock() - t2;
 
-=======
-            
+
+
             t2 = clock();
             table.rangeSearch(startWord, endWord);
             t2 = clock() - t2;
 
->>>>>>> 145d58d7ec9d3e2fd58037b719dd6b91488c8d84
             cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
             cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
             continue;
