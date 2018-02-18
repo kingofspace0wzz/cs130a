@@ -197,7 +197,7 @@ void bst::display(){
 // helper functions
 void bst::StringToLower(string& word)
 {
-  for (int i = 0; i < word.size(); ++i)
+  for (unsigned int i = 0; i < word.size(); ++i)
 {
     word[i] = tolower(word[i]);
 }

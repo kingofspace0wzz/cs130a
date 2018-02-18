@@ -233,7 +233,7 @@ int main(){
           cin >> word;
           if (!table.search(word) || !t.search(word))
             continue;
-          else
+          else{
             t1 = clock();
             t.remove(word);
             t1 = clock() - t1;
@@ -245,6 +245,7 @@ int main(){
             cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
             cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
             continue;
+          }
           }
         case 4:  // sort;
           {
