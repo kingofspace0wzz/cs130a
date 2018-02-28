@@ -268,6 +268,8 @@ int main(){
 
           out.close();
 
+          cout << "./sort.txt" << endl;
+
           cout << "BST: " << ((double)t1)/CLOCKS_PER_SEC << " s" << endl;
           cout << "Hash: " << ((double)t2)/CLOCKS_PER_SEC << " s" << endl;
           continue;
